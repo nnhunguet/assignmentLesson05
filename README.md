@@ -1,1 +1,1 @@
-<img source="https://avatars3.githubusercontent.com/u/52577080?s=60&v=4"/>
+<img source="https://avatars3.githubusercontent.com/u/52577080?s=60&v=4" width="350"/>
