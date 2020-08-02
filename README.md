@@ -1,2 +1,4 @@
-<img src="./assets/onRefresh.jpg" width="300"/>
-<img src="./assets/onRefresh.jpg"  width="300"/>
+<div>
+  <img src="./assets/onRefresh.jpg"/>
+  <img src="./assets/LastpageReached.jpg">
+</div>
