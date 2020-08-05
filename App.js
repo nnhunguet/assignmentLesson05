@@ -5,13 +5,9 @@ import { StyleSheet, Text, View, ActivityIndicator, FlatList, Linking, RefreshCo
 import moment from 'moment';
 import { Card, Button,Icon } from 'react-native-elements';
 
-const ListEmpty = () => {
-  return(
-    <View>
-      <Text>Empty List</Text>
-    </View>
-  )
-};
+import ListEmpty from './components/ListEmpty';
+import { API_KEY } from './constants';
+import Errors from './screens/Errors';
 
 const onPress = url => {
   Linking.canOpenURL(url).then(supported => {
@@ -49,10 +45,9 @@ export default function App() {
     setLoading(true);
     if (lastPageReached) return;
     console.log("getNews");
-    const API_KEY = "36b5dcd8b0ac488286f6c90c4528b8c4";
     const url = 'http://newsapi.org/v2/top-headlines?' +
-            'country=us&' +
-            `apiKey=${API_KEY}&page=${pageNumber}`;
+    'country=us&' +
+    `apiKey=${API_KEY}&page=${pageNumber}`;
     try {
       const response = await fetch(
         url
@@ -80,7 +75,6 @@ export default function App() {
     console.log("onRefresh");
     setPageNumber(pageNumber + 1);
     setRefreshing(true);
-    const API_KEY = "36b5dcd8b0ac488286f6c90c4528b8c4";
     const url = 'http://newsapi.org/v2/top-headlines?' +
             'country=us&' +
             `apiKey=${API_KEY}&page=${pageNumber}`;
@@ -109,11 +103,7 @@ export default function App() {
   }, []);
 
   if(error) {
-    return (
-      <View style={styles.container}>
-        <Text>Server Error</Text>
-      </View>
-    );
+    <Errors />
   }
 
   const renderArticleItem = ({ item }) => {
